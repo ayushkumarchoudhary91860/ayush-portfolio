@@ -1,0 +1,87 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-color: black;
+    color: #080800;
+    font-family: "Slabo 13px", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 1.5;
+    padding: 20px;
+    margin: 20px;
+
+}
+
+.container {
+    background-color: #E8E8CA;
+    max-width: 1000px;
+    padding: 40px;
+    margin: auto;
+    border-radius: 16px;
+}
+
+/*---- profile section ----- */
+.profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.profile h2 {
+    font-size: 1.5rem;
+    text-align: left;
+    margin: 0;
+}
+
+.profile p {
+    background-color: #1e1e1e;
+    padding: 5px 15px;
+    color: #FFBF00;
+    border: 1px solid #3a3a3a;
+    font-size: 0.8rem;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.profile img {
+    border-radius: 50%;
+    height: 120px;
+    width: 120px;
+    background: linear-gradient(to right, red, purple);
+    padding: 5px;
+}
+
+/*---contact---*/
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    border-top: 2px solid #3a3a3a;
+    padding-top: 20px;
+}
+
+.contact h2 {
+    margin-bottom: 20px;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 350px;
+}
+
+.contact-links a {
+    font-size: 40px;
+    color: #085998;
+    text-decoration: none;
+}
