@@ -1,20 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
 /* ============================================
    Tokens
    ============================================ */
 :root {
-    --bg: #0B0E14;
-    --panel: #10141C;
-    --card: #141A24;
-    --border: #232B38;
-    --text: #E7EAF0;
-    --text-muted: #8A93A6;
-    --accent: #E8A33D;
-    --accent-soft: rgba(232, 163, 61, 0.12);
-    --accent-border: rgba(232, 163, 61, 0.35);
+    --bg: #F4EDE0;
+    --panel: #FBF6EC;
+    --card: #FFFFFF;
+    --border: #E3D8C3;
+    --text: #2E2A24;
+    --text-muted: #6B6255;
+    --accent: #B8792B;
+    --accent-soft: rgba(184, 121, 43, 0.10);
+    --accent-border: rgba(184, 121, 43, 0.35);
 
-    --font-display: "Space Grotesk", "Inter", sans-serif;
-    --font-body: "Inter", sans-serif;
-    --font-mono: "IBM Plex Mono", monospace;
+    --font-display: "Fraunces", serif;
+    --font-body: "Work Sans", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
 
     --radius: 14px;
 }
@@ -40,8 +42,8 @@ body {
     min-height: 100vh;
     background-color: var(--bg);
     background-image:
-        radial-gradient(circle at 15% 0%, rgba(232, 163, 61, 0.06), transparent 40%),
-        radial-gradient(circle at 100% 30%, rgba(232, 163, 61, 0.04), transparent 45%);
+        radial-gradient(circle at 15% 0%, rgba(184, 121, 43, 0.08), transparent 40%),
+        radial-gradient(circle at 100% 30%, rgba(184, 121, 43, 0.06), transparent 45%);
     color: var(--text);
     font-family: var(--font-body);
     font-size: 17px;
@@ -60,6 +62,7 @@ a {
     padding: 48px 56px;
     margin: auto;
     border-radius: 20px;
+    box-shadow: 0 12px 32px rgba(120, 96, 55, 0.08);
 }
 
 /* ============================================
@@ -90,6 +93,7 @@ a {
     font-weight: 700;
     letter-spacing: -0.01em;
     margin: 0;
+    color: var(--text);
 }
 
 .cursor {
@@ -116,7 +120,7 @@ a {
     object-fit: cover;
     flex-shrink: 0;
     padding: 4px;
-    background: linear-gradient(135deg, var(--accent), #7A5230);
+    background: linear-gradient(135deg, var(--accent), #E8C99A);
 }
 
 /* navigation */
@@ -172,6 +176,7 @@ main>div:first-child {
     font-weight: 700;
     margin-bottom: 14px;
     letter-spacing: -0.01em;
+    color: var(--text);
 }
 
 .line,
@@ -210,42 +215,223 @@ button:focus-visible {
 }
 
 /* ============================================
-   Skills
+   SKILLS GRID
    ============================================ */
+
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-    gap: 16px;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 1.5rem;
+
+    padding: 2rem;
+
+    max-width: 800px;
+
+    margin: 0 auto;
 }
+
+
+/* ============================================
+   SKILL CARD
+   ============================================ */
 
 .item {
+    width: 150px;
+    height: 150px;
+
     padding: 20px 12px;
-    border-radius: var(--radius);
+
+    border-radius: 12px;
+
+    /* CREAM CARD BACKGROUND */
+    background: var(--card);
+
+    /* Simple soft border */
     border: 1px solid var(--border);
-    background-color: var(--card);
+
+    /* Center everything */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     text-align: center;
-    transition: transform 0.25s ease, border-color 0.25s ease;
+
+    /* Existing entrance animation */
+    opacity: 0;
+    transform: translateY(10px);
+
+    animation: reveal 0.6s ease forwards;
+
+    /* Existing hover transition */
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+
+    position: relative;
+
+    cursor: pointer;
 }
 
+
+/* ============================================
+   SKILL ICON
+   ============================================ */
+
 .item img {
-    height: 36px;
-    width: 36px;
-    filter: invert(70%) sepia(28%) saturate(700%) hue-rotate(1deg) brightness(105%);
+    height: 48px;
+    width: 48px;
+
+    object-fit: contain;
+
+    filter:
+        invert(46%)
+        sepia(45%)
+        saturate(700%)
+        hue-rotate(1deg)
+        brightness(90%);
+
     margin-bottom: 12px;
+
+    transition:
+        transform 0.3s ease;
 }
+
+
+/* ============================================
+   SKILL NAME
+   ============================================ */
 
 .item h3 {
     font-family: var(--font-mono);
-    font-size: 0.82rem;
+
+    font-size: 0.9rem;
+
     font-weight: 500;
+
     color: var(--text);
+
+    margin: 0;
+
+    /* Forces text below image */
+    display: block;
+
+    text-align: center;
+
+    line-height: 1.3;
 }
+
+
+/* ============================================
+   SKILL CARD HOVER
+   ============================================ */
 
 .item:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent-border);
+    transform: scale(1.05);
+
+    border-color: var(--accent);
+
+    box-shadow:
+        0 0 15px rgba(184, 121, 43, 0.18),
+        0 10px 25px rgba(120, 96, 55, 0.15);
 }
 
+
+/* ============================================
+   ICON HOVER
+   ============================================ */
+
+.item:hover img {
+    transform: scale(1.1);
+}
+
+
+/* ============================================
+   GRADIENT LINE EFFECT
+   ============================================ */
+
+.item::before,
+.item::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 2px;
+
+    background: linear-gradient(
+        to right,
+        #D98C4A,
+        #B8792B
+    );
+
+    transform: scaleX(0);
+
+    transition: transform 0.4s ease;
+}
+
+
+/* Top line */
+.item::before {
+    top: -5px;
+
+    transform-origin: left;
+}
+
+
+/* Bottom line */
+.item::after {
+    bottom: -5px;
+
+    transform-origin: right;
+}
+
+
+/* Animate both lines */
+.item:hover::before,
+.item:hover::after {
+    transform: scaleX(1);
+}
+
+
+/* ============================================
+   MOBILE / TABLET
+   ============================================ */
+
+@media (max-width: 700px) {
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 1rem;
+
+        padding: 1rem;
+    }
+
+    .item {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+
+@media (max-width: 400px) {
+
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .item {
+        width: 150px;
+        height: 150px;
+    }
+}
 /* ============================================
    Education timeline
    ============================================ */
@@ -328,15 +514,35 @@ button:focus-visible {
     border: 1px solid var(--border);
     border-radius: var(--radius);
     overflow: hidden;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: reveal 0.7s ease forwards;
+    animation-delay: calc(var(--i, 0) * 0.1s);
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
     display: flex;
     flex-direction: column;
 }
 
+.project:nth-child(1) {
+    --i: 1;
+}
+
+.project:nth-child(2) {
+    --i: 2;
+}
+
+.project:nth-child(3) {
+    --i: 3;
+}
+
+.project:nth-child(4) {
+    --i: 4;
+}
+
 .project:hover {
-    transform: translateY(-4px);
+    transform: translateY(-8px);
     border-color: var(--accent-border);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 18px 36px rgba(120, 96, 55, 0.14), 0 0 24px var(--accent-soft);
 }
 
 .project-image {
@@ -346,8 +552,8 @@ button:focus-visible {
     justify-content: center;
     position: relative;
     background:
-        radial-gradient(circle at center, rgba(232, 163, 61, 0.10) 0%, transparent 60%),
-        #0D1119;
+        radial-gradient(circle at center, rgba(184, 121, 43, 0.12) 0%, transparent 60%),
+        #F1E7D4;
     overflow: hidden;
 }
 
@@ -356,8 +562,14 @@ button:focus-visible {
     width: 84px;
     height: 84px;
     object-fit: contain;
-    filter: invert(76%) sepia(28%) saturate(900%) hue-rotate(-8deg) brightness(105%);
+    filter: invert(46%) sepia(45%) saturate(900%) hue-rotate(-8deg) brightness(90%);
     opacity: 0.9;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.project:hover .project-image img {
+    transform: scale(1.08);
+    opacity: 1;
 }
 
 .card {
@@ -460,6 +672,7 @@ button:focus-visible {
     width: 56px;
     border-radius: 50%;
     border: 1px solid var(--border);
+    background: var(--card);
     transition: color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
